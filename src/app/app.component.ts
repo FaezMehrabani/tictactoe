@@ -24,11 +24,6 @@ export class AppComponent {
     this.gameService.turn = 0;
   }
 
-  resetGame(event) {
-    location.reload();
-    event.preventDefault();
-  }
-
   playerClick(i) {
     if ( this.gameService.blocks[i].free === false || this.lock === true ) { // If Block is already fill, don't Do anything
         return;
@@ -43,8 +38,6 @@ export class AppComponent {
         this.snackBar.open('Game:', 'Draw', {
           duration: 2000,
         });
-        // setTimeout( this.newGame() , 10000);
-        // this.newGame();
         return;
     }
 
@@ -66,11 +59,9 @@ export class AppComponent {
 
     } else {
         this.lock = true;
-        this.gameService.players[this.gameService.turn].score += 1;
         this.snackBar.open('Winner:', 'Player ' + (this.gameService.turn + 1), {
           duration: 4000,
         });
-        // setTimeout( this.newGame() , 10000);
         return;
     }
   }
